@@ -1,23 +1,26 @@
 +++
-title = 'Contrib'
+title = 'Arf'
 date = 2024-05-30T17:03:16-04:00
 draft = true
 math = true
 +++
 
 
-A contrib object describes your synth sound. 
+An Arf object describes your synth sound. 
+[sound](/demo-sawtooth.mp3)
+
+{{< audio "demo-sawtooth" >}}
 
 We use it to specify the functional assignments for a single instrument, such as a percussive synth; a lead instrument; a bass; and more!
 
 Note that we use the word "instrument" to refer to an acoustic or electronic sound maker, while "synthesizer" is always electronic. 
 
-In this document we assume a sampling rate of 48,000 Hertz. 
+In this document we assume an audio sampling rate of 48,000 samples per second. 
 
 
 # Parameters {#parameters}
 
-Below we describe the 6 parameters required to define a Contrib. Each parameter description includes a list of available values.
+Below we describe the 6 parameters required to define an Arf. Each parameter description includes a list of available values.
 
 1. [Mode](#mode) 
 2. [Role](#role)
@@ -38,7 +41,7 @@ ___
 
 While it is up to the preset designer to fully implement the elements of each druidic synth, the **Mode** parameter is a macro knob telling which set of harmonics is most important. 
 
-**melodic** synthesizers are the most familiar sounds, containing integer-ratio harmonics to produce for example conventional overtone based waveforms square, sawtooth, or square waves. Each of these waveforms also has its undertone inverse, where we include frequencies based on the integer division of the fundamental (as opposed to integer multiplication). 
+**melodic** synthesizers are the most familiar sounds, containing integer-ratio harmonics from a given fundamental frequency. These Fourier series representations produce the conventional overtone (multiplication) waveforms square, triangle, or sawtooth waves. These also have an undertone (division) inverse. 
 
 **enharmonic** synthesizers need to be handled carefully, as they can easily become noise synths if not well studied. Two good examples of enharmonic synths are "bell" sounds and "snare" sounds. Bells have well defined enharmonic ratios from a fundamental; and percussion instruments like snare drums have a specific set of nodal vibrations. These numbers can be easiliy generated in a gentime context for enharmonic synths.
 
@@ -88,7 +91,7 @@ ___
 
 For **melodic** synths, register determines whether the synthesizer will contain overtones, undertones, or a combination of both.
 
-While register is more often used in the composition context for describing tones, it can also be applied as a general contrib parameter. When applied to a contrib it means this register is the lowest possible register that the instrument will perform (therefore, setting the maximum height for the synth). 
+While register is more often used in the composition context for describing tones, it can also be applied as a general arf parameter. When applied to an arf it means this register is the lowest possible register that the instrument will perform (therefore, setting the maximum height for the synth). 
 
 Naturally, high registers have shorter spectra and low registers are the tallest. 
 
@@ -181,7 +184,7 @@ ___
 # 
 ### Visibility + Energy
 #
-**Visible** and **foreground** contribs activate amplitude modulation. 
+**Visible** and **foreground** arfs activate amplitude modulation. 
 
 Animating amplitude means widening the range of overall amp contours. As an example, rather than having a constant pluck decay, the synthesizer may also include longer held tones as well.
 
@@ -191,9 +194,9 @@ Animating amplitude means widening the range of overall amp contours. As an exam
 
 **High** or **medium energy** is required to activate bandpass animation. 
 
-Animating Bandpass animation means adding contour to the highpass or lowpass filters for a contrib. 
+Animating Bandpass animation means adding contour to the highpass or lowpass filters for an arf. 
 
-**Visible** contribs animate on the lowpass filter, while **foreground** contribs animate on the highpass filter. The idea here is that the lowpass animation generally retains the fundamental while the highpass filter may temporarily remove the fundamental. 
+**Visible** arfs animate on the lowpass filter, while **foreground** arfs animate on the highpass filter. The idea here is that the lowpass animation generally retains the fundamental while the highpass filter may temporarily remove the fundamental. 
 
 The more a part indicates a clear fundamental, the more visible it becomes to our ears.
 

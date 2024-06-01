@@ -1,11 +1,11 @@
 +++
-title = 'Arf'
+title = 'The Art and Science of Sound Design'
 date = 2024-05-30T17:03:16-04:00
 draft = true
 math = true
 +++
 
-Resonant Realities: The Art and Science of Sound Design
+
 
 Imagine this: a fork slips from your grasp, its metallic ring reverberating through the stillness. Or the deep, resonant hum of a distant thunderstorm rolling through the hills, each rumble telling a story of nature's raw power. These aren’t just sounds; they are natural phenomena that we can capture and recreate, crafting experiences that can transport you to another realm or invoke nostalgia.
 
@@ -41,7 +41,7 @@ These are the parameters and their options. The related subsection describes the
 
 Some of these parameters are also applied to synthesizer animation. See [VEP Combination Parameters](#combination-parameters).
 
-## Mode | *Primary element for the synthesizer* {#mode}
+## Mode | *Primary element for the preset* {#mode}
 
 `mode`
 - `melodic`
@@ -92,9 +92,9 @@ Design druidic presets based on these guidelines:
 - Percussive elements are less likely to have a **melodic** mode, whereas instrumental elements are more likely.
 
 
-**chords** is a special case because it is the only instrument designed generally for polyphony. As such, it is often shorter because it is expected to contain more simultaneous notes (and therefore more overall energy).
+**chords** is a special case because it is the only instrument designed generally for polyphony. As such, it is often shorter (with respect to spectral content) because it is expected to contain more simultaneous notes, and therefore more overall energy.
 
-**lead** is also a special case in that it is designed for high visibility and energy, regardless of register.
+**lead** is also a special case in that it is designed with high visibility and energy, regardless of register.
 
 ## Register | *Vertical placement in the spectrogram* {#register}
 
@@ -119,11 +119,18 @@ The provided **register** is the lowest octave where the instrument will perform
 
 High **registers** (like 13 or 14) have shorter spectra, while low **registers** (like 4 or 5) are taller.
 
-Most music is recorded with a sampling rate of 48,000 samples per second, providing a maximum reproducible frequency of 24,000 Hertz. The best consumer and commercial amplifiers can reproduce low frequencies down to about 30 Hertz. We use these values (30, 24,000) to determine the set of available **register** values. This explains why we don't find options for *1*, *2*, *3*, *4*, or anything higher than **13**. 
+Most music is recorded with a sampling rate of 48,000 samples per second providing a maximum reproducible frequency of 24,000 Hertz. The best consumer and commercial amplifiers can reproduce low frequencies down to about 30 Hertz. We use these values (30, 24,000) to determine the set of available **register** values. 
 
 
-So considering a low register of **5**, that means we have a baseline value of \(2^5 = 32\) and a maximum value of \(2^6 = 64\).
-Most consumer-grade sound systems, like your home speakers, probably can't reproduce the 32 Hertz frequency. (Well, since it is *you* reading this, maybe it can.) But most sound systems *can* reproduce a 64 Hertz frequency.
+
+Considering a low register of **5**, that means we have a baseline value of \(2^5 = 32\) and a maximum value of \(2^6 = 64\).
+
+
+Most consumer-grade sound systems, like your home speakers, probably can't reproduce the 32 Hertz frequency. (Well, since it is *you* reading this, maybe it can.) But most sound systems *can* reproduce a 64 Hertz frequency. 
+
+When you do the same calculation at **register 4** you'll find that **register 4** includes some frequencies that we might not be able to reproduce. 
+
+This explains why we don't find **register** options for *1*, *2*, *3*, *4*, or anything higher than **13**. 
 
 <!-- ### Music for Human Ears -->
 <!-- 
@@ -139,20 +146,24 @@ Since we are synthesizing sound intended to be perceived as well-mixed, we can c
 - `foreground`
 - `background`
 - `hidden`
+
+*Note* that **visibility** is the name of the parameter, which includes an option **visible**.
 ___
 
-Not all instruments are presented equally. Some are featured front and center, while others provide a supporting role. 
-Without synthesis, the primary way we have to manage the presence of a part is by playing it more softly or loudly; or run it through an analog filter.
+Not all instruments are presented equally. 
 
-Applying a gentime frequency filter to our additive synthesizer provides an additional layer of focal point management.
+Some are featured front and center, while others provide a supporting role. 
+Without synthesis, the primary way we have to manage the presentation of a part is by playing it more softly or loudly, or run it through an analog filter.
+
+Applying a gentime frequency filter to our additive synthesizer provides an additional layer of **visibility** management.
 
 A **visible** part has no filtering: We want to see it all.
 
-Parts in the **foreground** may have some additional cutoff applied or animation on their bandpass.
+Parts in the **foreground** may have an artificially shortened height or animation on bandpass.
 
 **Background** parts have stricter bandpass settings and may have animation on bandpass.
 
-**Hidden** parts are constrained to their octave. They may not be animated.
+**Hidden** parts are constrained to their octave. They may not have bandpass animation.
 
 
 ## Energy | *Knob for spectral height* {#energy}
@@ -167,6 +178,8 @@ The goal of additive synthesis is to manage the spectral content of a synthesize
 
 The **energy** parameter is a simple method for describing how tall the synthesizer is. That is, the range of the synthesizer's spectral reach.
 
+#### Low
+
 As an extreme example, consider a synth that plays a frequency at 100 Hertz. That means it is a pure sine wave of one component and has the lowest possible **energy** (which is covered by the **low** value).  
 
 A more interesting waveform is the square wave.
@@ -178,6 +191,8 @@ making it a **low energy** instrument.
 
 You might be wondering why stop at 7? Exactly! That's not the entire range of available harmonics for this square! We can make it even taller by choosing to add more harmonics. 
 
+#### High
+
 The tallest version of this synth has all odd-numbered multiples of the fundamental (100) up to the Nyquist Frequency (24,000). 
 > frequencies: 100, 300, 500, 700, 900, 1100, 1300, 1500, 1700 ... 19000, 21000, 23000. 
 
@@ -187,10 +202,12 @@ This is a very tall instrument, occupying a lot of our spectral canvas and leavi
 
 To address this, let's make this synth shorter while still maintaining a square wave.
 
+#### Medium
+
 Let's impose an artificial limit of 15 harmonics for the synth:
 >  frequencies: 100, 300, 500, 700, 900, 1100, 1300, 1500
 
-This is still a square wave, though with less energy than the taller version above, but also with more energy than our earlier 7 harmonic example. Thus, this 15 harmonic version of the square has **medium energy**.
+This is still a square wave. It has less energy than the taller version above, but also has more energy than our earlier 7 harmonic example. Thus, this 15 harmonic version of the square has **medium energy**.
 
 **Energy** is also determined by the Arf's **register**. A flute (**register 10**) is almost always going to have less computed energy than a bass (**register 6**).
 
@@ -205,7 +222,7 @@ ___
 
 Managing amplitude is the most straightforward way to boost or kill a signal. 
 
-It's the highest level control we have for all instruments and is the original interpretation of "dynamics" in music: Adding engagement through crescendo and decrescendo. 
+It's the highest level control we have for all instruments and is the original interpretation of "dynamics" in music: Adding interest through crescendo and decrescendo. 
 
 While long-form contours like crescendo and decrescendo are a matter of phrasing, we can use the same idea at a much smaller scale: The note event. 
 
@@ -219,7 +236,7 @@ This is the premise of **presence**. It's a simple way to describe the synthesiz
 
 An *important observation* is that none of the note events extend beyond the duration. This is *contrary* to the popular concept of "release" in traditional ADSR.
 
-With druid synthesis, you are guaranteed that the body of the sound is rendered for the exact duration requested.
+With druidic synthesis, you are guaranteed that the body of sound rendered will produce a sample for the exact duration requested. The tail end of the waveform may include either silence or a fading signal. 
 
 
 ## Combination Parameters VEP {#combination-parameters}
@@ -245,11 +262,11 @@ Bandpass animation is adding contour to the highpass or lowpass filters for a no
 
 **Visible** arfs animate on the lowpass filter, while **foreground** arfs animate on the highpass filter. 
 
-For overtones, 
+For *overtones*, 
 - The lowpass filter animation via **visible** retains its fundamental, adding motion without affecting perceived fundamental.
 - The highpass filter animation via **foreground** removes its fundamental, adding motion and weakening the signal.
 
-For undertones, the filter banks are reversed. 
+For *undertones*, the filter banks are reversed. 
 
 - Highpass filter animation via **visible** retains the fundamental, adding motion without affecting perceived fundamental.
 - Lowpass filter animation via **foreground** removes the fundamental, adding motion and weakening the signal.

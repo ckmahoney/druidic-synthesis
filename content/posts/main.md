@@ -1,13 +1,14 @@
 +++
 title = 'Druidic Synthesis'
-date = 2024-05-30T17:10:40-04:00
-draft = true
+draft = false
 +++
 
-**Your cookbook for dynamic additive synthesis**
+**Your spellbook for dynamic additive synthesis**
+
+![An earth-person synthesizing waveforms with their hands](/image/druidic-synthesis.webp)
 
 Druidic Synthesis is an additive model for creating a collection of related dynamic synthesizers.
 
-Each synth is dynamic in that every noteevent performed by a druidic synth will be distinct, yet feel related to the rest of its notes.
+It is inspired by conventional *physical modelling*. However, Druidic Synthesis has no specific goal of reproducing conventnional acoustic sounds. Drudic Synthesis lends itself to *fantastic modelling.*
 
-The synths in the collection are related in that they may interact with one another in terms of amplitude or frequency cross-reading.
+Every druidic synthesizer is dynamic in that each noteevent performed will be distinct, yet feel related to the rest of its notes. This model defines how to generalize organic phrasing.

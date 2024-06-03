@@ -1,7 +1,7 @@
 +++
 title = 'The Art and Science of Sound Design'
 date = 2024-05-30T17:03:16-04:00
-draft = true
+draft = false
 math = true
 +++
 

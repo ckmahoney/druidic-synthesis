@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'Druidic Synthesis'
-theme = 'ananke'
+theme = 'druid'
 
 [markup]
   [markup.goldmark]
@@ -13,4 +13,5 @@ theme = 'ananke'
           inline = [['\(', '\)']]
 
 [params]
-math = true
+  math = true
+  themeVariant = ['relearn-light', 'relearn-dark']

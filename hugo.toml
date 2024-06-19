@@ -15,3 +15,4 @@ theme = 'druid'
 [params]
   math = true
   themeVariant = ['relearn-light', 'relearn-dark']
+  disableSearch = true

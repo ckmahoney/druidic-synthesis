@@ -5,7 +5,7 @@ title = 'Druidic Synthesis'
 
 **Your spellbook for dynamic additive synthesis**
 
-![An earth-person synthesizing waveforms with their hands](/image/druidic-synthesis.webp)
+![An earth-person synthesizing waveforms with their hands](/druidic-synthesis/image/druidic-synthesis.webp)
 
 Druidic Synthesis is an additive model for creating dynamic synthesizers.
 

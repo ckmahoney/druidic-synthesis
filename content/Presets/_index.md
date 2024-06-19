@@ -1,7 +1,5 @@
 +++
-title = 'Druidic Preset'
-date = 2024-06-03T16:26:00-04:00
-draft = false
+title = 'Presets'
 +++
 
 **visibility**, **energy**, **presence**, and **f**

@@ -1,5 +1,5 @@
 +++
-title = 'Druidic Synthesis'
+title = 'Specifications'
 +++
 
 **Your spellbook for dynamic additive synthesis**

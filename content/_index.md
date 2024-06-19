@@ -2,12 +2,13 @@
 title = 'Druidic Synthesis'
 +++
 
-A fantastical model for audio synthesis
 
-These documents are an early proposal for generically describing expressive sound as a function of human readable input.
+**Your spellbook for dynamic additive synthesis**
 
-Druidic Synthesis is an extension of Additive Synthesis, and a neighbor to Physical Modelling. Unlike physical modelling, druidic synthesis does not necessarily aim to reproduce sounds of nature. Instead, it fabricates new natures and evolves them over the course of their respective lifetimes.
+![An earth-person synthesizing waveforms with their hands](/image/druidic-synthesis.webp)
 
-You can find a rust implementation of this model at [raudio](https://github.com/ckmahoney/raudio).
+Druidic Synthesis is an additive model for creating dynamic synthesizers.
 
-This site is intended to describe a model applied in some programming language or modular synthesizer. 
+It is inspired by conventional *physical modelling*. However, Druidic Synthesis has no specific goal of reproducing conventnional acoustic sounds. Druidic Synthesis lends itself to *fantastic modelling.*
+
+This site is intended to describe a model applied in some programming language or modular synthesizer.  You can find a rust implementation of this model at [raudio](https://github.com/ckmahoney/raudio).

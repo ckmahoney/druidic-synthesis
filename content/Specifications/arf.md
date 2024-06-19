@@ -7,7 +7,7 @@ math = true
 
 
 
-## Preface: preset 
+### Preface: preset 
 
 This article discusses "Arf parameters" and "druidic presets" from a developer's perspective. 
 

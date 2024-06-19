@@ -1,11 +1,11 @@
 +++
-title = 'Phrasing'
+title = 'Distortion'
 date = 2024-06-03T08:52:46-04:00
 +++
 
-# Change over time
+## Mutant Signals
 
-Phrasing describes a few topics. 
+Distortion describes a few topics. 
 
 Let's make some definitions.
 
